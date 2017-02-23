@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Inherit AOSP base telephony configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# Inherit common device configuration
+(call inherit-product, device/samsung/smdk5260-common/device-common.mk)
 
 # Inherit device specific files
 $(call inherit-product, device/samsung/hl3g/device.mk)
@@ -23,7 +26,7 @@ $(call inherit-product-if-exists, vendor/samsung/hl3g/hl3g-vendor.mk)
 
 # Overrides
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_hl3g
+PRODUCT_NAME := aosp_hl3g
 PRODUCT_DEVICE := hl3g
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-N750
